@@ -14,7 +14,8 @@ void layAndRemoveTiles(){
         else{
             turnLeft(); // turns left when front is not clear or beeper ahead
             moveForward();
-            layAndRemoveTiles(); // Rekursion: saves direction changes 
+            layAndRemoveTiles(); // Rekursion: Saves direction changes 
+            // picks up tiles and moves corner
             moveForward();
             pickBeeper();
             turnRight(); // turns right at turningspoints for going the same way back
