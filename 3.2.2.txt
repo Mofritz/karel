@@ -1,28 +1,23 @@
 void layAndRemoveTiles(){
-    if(frontIsClear() && !beeperAhead()){ // Go to next field if clear and no beeper ahead
-        dropBeeper(); //drops beeper on empty field
-        moveForward(); // moves to next field
-        layAndRemoveTiles(); // Recursion: checks next field and saves information that tile has been layed
-        
-        // picks a Tile up after all has been set
-        moveForward();
-        pickBeeper();       
-    }    
+    if(onBeeper()){ // Detects Turning Point
+        turnAround();
+    }
     else{
-        turnLeft(); // turns left when front is not clear or beeper ahead
-        if(beeperAhead()){ // detects when all Tiles are set and starts a turn sequence
-            // turn sequence
-            dropBeeper();
+        dropBeeper(); //drops beeper on empty field
+        if(frontIsClear() && !beeperAhead()){ // Go to next field if clear and no beeper ahead
+            moveForward(); // moves to next field
+            layAndRemoveTiles(); // Rekursiion: checks next field and saves information that tile has been layed           
+            // picks one Tile up after all has been set
             moveForward();
-            turnAround();
+            pickBeeper();       
+        }    
+        else{
+            turnLeft(); // turns left when front is not clear or beeper ahead
+            moveForward();
+            layAndRemoveTiles(); // Rekursion: saves direction changes 
             moveForward();
             pickBeeper();
-            turnRight();            
-        }
-        else{
-            layAndRemoveTiles(); // saves turningpoints
             turnRight(); // turns right at turningspoints for going the same way back
-            
         }       
     }  
 }
