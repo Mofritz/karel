@@ -1,0 +1,21 @@
+void findShelters(){
+    
+    repeat(4) // checks all sides of one field
+    {
+        if(!beeperAhead() && frontIsClear()){ // if next field in front has no beeper go on it
+            moveForward();
+            if(leftIsClear() || rightIsClear() || frontIsClear()){
+                dropBeeper(); // marks Field as no Shelter
+                findShelters(); // Rekursion ... checks the next field
+            }
+            // Go back when shelter found or surrounded from beepers 
+            turnAround();
+            moveForward();
+            turnAround();                
+            
+        }      
+        turnLeft();
+        // with repeat: Umdrehen zur Überprüfung aller vier Seiten
+        
+    }
+}
