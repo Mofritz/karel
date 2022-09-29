@@ -1,159 +1,28 @@
 void layAndRemoveTiles(){
-    layTiles();
-    turnAround();
-    removeTiles();
-}
-
-// additional Functions
-
-void layTiles(){
-    
-    while(!onBeeper())
-    {
+    if(frontIsClear() && !beeperAhead()){ // Go to next field if clear and no beeper ahead
+        dropBeeper(); //drops beeper on empty field
+        moveForward(); // moves to next field
+        layAndRemoveTiles(); // Recursion: checks next field and saves information that tile has been layed
         
-        if(frontIsClear() && !beeperAhead())
-        {
+        // picks a Tile up after all has been set
+        moveForward();
+        pickBeeper();       
+    }    
+    else{
+        turnLeft(); // turns left when front is not clear or beeper ahead
+        if(beeperAhead()){ // detects when all Tiles are set and starts a turn sequence
+            // turn sequence
             dropBeeper();
             moveForward();
+            turnAround();
+            moveForward();
+            pickBeeper();
+            turnRight();            
         }
-        else if(!frontIsClear() || beeperAhead())
-        {
-            turnLeft();
-            if(beeperAhead())
-            {
-                dropBeeper();
-                moveForward();
-            }
-        }
-        
-    }
-    
-}
-
-void removeTiles(){
-    
-    firstLayer();
-    secondLayer();
-    thirdLayer();
-    forthLayer();
-    lastLayer();
-}
-
-void firstLayer(){
-    pickBeeper();
-    moveForward();
-    turnRight();
-    pickBeeper();
-    moveForward();
-    turnRight();
-    pickBeeper();
-    moveForward();
-    pickBeeper();
-    turnRight();
-    moveForward();
-    moveForward();
-    turnRight();
-    
-}
-
-void secondLayer(){
-    pickBeeper();
-    repeat(2){
-        moveForward();
-        pickBeeper();
-    }
-    turnRight();
-    repeat(3){
-        moveForward();
-        pickBeeper();
-    }
-    turnRight();
-    repeat(3){
-        moveForward();
-        pickBeeper();
-    }
-    turnRight();
-    repeat(3){
-        moveForward();
-        pickBeeper();
-    }
-    moveForward();
-    turnRight();
-    
-}
-
-void thirdLayer(){
-    pickBeeper();
-    repeat(4){
-        moveForward();
-        pickBeeper();
-    }
-    turnRight();
-    repeat(5){
-        moveForward();
-        pickBeeper();
-    }
-    turnRight();
-    repeat(5){
-        moveForward();
-        pickBeeper();
-    }
-    turnRight();
-    repeat(5){
-        moveForward();
-        pickBeeper();
-    }
-    moveForward();
-    turnRight();
-    
-}
-
-void forthLayer(){
-    pickBeeper();
-    repeat(6){
-        moveForward();
-        pickBeeper();
-    }
-    turnRight();
-    repeat(7){
-        moveForward();
-        pickBeeper();
-    }
-    turnRight();
-    repeat(7){
-        moveForward();
-        pickBeeper();
-    }
-    turnRight();
-    repeat(7){
-        moveForward();
-        pickBeeper();
-    }
-    moveForward();
-    turnRight();
-    
-}
-
-void lastLayer(){
-    pickBeeper();
-    repeat(8){
-        moveForward();
-        pickBeeper();
-    }
-    turnRight();
-    repeat(9){
-        moveForward();
-        pickBeeper();
-    }
-    turnRight();
-    repeat(9){
-        moveForward();
-        pickBeeper();
-    }
-    turnRight();
-    repeat(9){
-        moveForward();
-        pickBeeper();
-    }
-    
+        else{
+            layAndRemoveTiles(); // saves turningpoints
+            turnRight(); // turns right at turningspoints for going the same way back
+            
+        }       
+    }  
 }
