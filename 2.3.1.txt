@@ -1,0 +1,50 @@
+
+void saveTheFlowers(){
+    goUp();
+    turnRight();
+    goDown();
+    turnLeft();
+}
+
+
+// Additional Functions
+
+void goUp(){
+    while(!frontIsClear())
+    {
+        goOneStepUp();
+    }
+}
+
+void goOneStepUp(){
+    if(onBeeper())
+    {
+        pickBeeper();
+    }
+    turnLeft();
+    while(!rightIsClear())
+    {
+        moveForward();
+    }
+    turnRight();
+    moveForward();
+}
+
+void goDown(){
+    while(leftIsClear())
+    {
+        goOneStepDown();
+    }
+}
+
+void goOneStepDown(){
+    dropBeeper();
+    turnLeft();
+    moveForward();
+    turnRight();
+    while(frontIsClear())
+    {
+        moveForward();
+    }
+    
+}

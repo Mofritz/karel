@@ -1,0 +1,101 @@
+void quantizeBits(){
+    
+    while(frontIsClear())
+    {
+        if(onBeeper())
+        {
+            encodeOneRow();
+        }
+        else
+        {
+            moveForward();
+        }
+    }
+    encodeOneRow();
+}
+
+// AdditionFunction
+
+void encodeOneRow(){
+    turnLeft();
+    if(beeperAhead())
+    {
+        moveForward();
+        if(beeperAhead())
+        {
+            moveForward();
+            if(beeperAhead())
+            {
+                moveForward();
+                if(beeperAhead())
+                {
+                    moveForward();
+                    if(beeperAhead())
+                    {
+                        fillRow();
+                    }
+                    else
+                    {
+                        cleanRow();
+                    }
+                }
+                else
+                {
+                    cleanRow();
+                }
+            }
+            else
+            {
+                cleanRow();
+            }
+        }
+        else
+        {
+            cleanRow();
+        }
+    }
+    else
+    {
+        cleanRow();
+    }
+    
+}
+
+void cleanRow(){
+    turnAround();
+    while(frontIsClear())
+    {
+        pickBeeper();
+        moveForward();       
+    }
+    pickBeeper();
+    turnLeft();
+    
+}
+
+void fillRow(){
+    
+    while(frontIsClear())
+    {
+        if(!onBeeper())
+        {
+            dropBeeper();
+        }
+        moveForward();
+    }
+    if(!onBeeper())
+    {
+        dropBeeper();
+    }
+    turnAround();
+    while(frontIsClear())
+    {
+        moveForward();
+    }
+    turnLeft();
+    if(frontIsClear())
+    {
+        moveForward();
+    }
+    
+}

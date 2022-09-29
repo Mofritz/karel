@@ -1,0 +1,161 @@
+void partyAgain(){
+    while(frontIsClear())
+    {
+        cleanOneRow();
+        moveForward();
+    }
+    cleanOneRow();
+}
+
+
+// additional Functions
+
+void cleanOneRow(){
+    turnLeft();
+    pickBeeper();
+    if(frontIsClear())
+    {
+        moveForward();
+        if(frontIsClear())
+        {
+            moveForward();
+            if(frontIsClear())
+            {
+                moveForward();
+                if(frontIsClear())
+                {
+                    moveForward();
+                    if(frontIsClear())
+                    {
+                        moveForward();
+                        if(frontIsClear())
+                        {
+                            moveForward();
+                            if(frontIsClear())
+                            {
+                                moveForward();
+                                if(frontIsClear())
+                                {
+                                    moveForward();
+                                    walkBackEightSteps();
+                                }
+                                else
+                                {
+                                    walkBackSevenSteps();
+                                }
+                            }
+                            else
+                            {
+                                walkBackSixSteps();
+                            }
+                        }
+                        else
+                        {
+                            walkBackFiveSteps();
+                        }
+                    }
+                    else
+                    {
+                        walkBackFourSteps();
+                    }
+                }
+                else
+                {
+                    walkBackTreeSteps();
+                }
+                
+            }
+            else
+            {
+                walkBackTwoSteps();
+            }
+        }
+        else
+        {
+            walkBackOneStep();
+        }
+    }
+    else
+    {
+        turnRight();
+    }
+}
+
+
+void walkBackOneStep(){
+    dropBeeper();
+    turnAround();
+    moveForward();
+    turnLeft();
+}
+
+void walkBackTwoSteps(){
+    dropBeeper();
+    turnAround();
+    repeat(2)
+    {
+        moveForward();
+    }
+    turnLeft();
+}
+
+void walkBackTreeSteps(){
+    dropBeeper();
+    turnAround();
+    repeat(3)
+    {
+        moveForward();
+    }
+    turnLeft();
+}
+
+void walkBackFourSteps(){
+    dropBeeper();
+    turnAround();
+    repeat(4)
+    {
+        moveForward();
+    }
+    turnLeft();
+}
+
+void walkBackFiveSteps(){
+    dropBeeper();
+    turnAround();
+    repeat(5)
+    {
+        moveForward();
+    }
+    turnLeft();
+}
+
+void walkBackSixSteps(){
+    dropBeeper();
+    turnAround();
+    repeat(6)
+    {
+        moveForward();
+    }
+    turnLeft();
+}
+
+
+void walkBackSevenSteps(){
+    dropBeeper();
+    turnAround();
+    repeat(7)
+    {
+        moveForward();
+    }
+    turnLeft();
+}
+
+void walkBackEightSteps(){
+    dropBeeper();
+    turnAround();
+    repeat(8)
+    {
+        moveForward();
+    }
+    turnLeft();
+}

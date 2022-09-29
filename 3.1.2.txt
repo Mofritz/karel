@@ -1,0 +1,166 @@
+void fetchTheStars(){
+    while(frontIsClear())
+    {
+        fetchOneStar();
+        moveForward();
+    }
+    fetchOneStar();
+}
+
+
+// additional Functions
+
+void fetchOneStar(){
+    turnLeft();
+    if(frontIsClear())
+    {
+        moveForward();
+        if(frontIsClear())
+        {
+            moveForward();
+            if(frontIsClear())
+            {
+                moveForward();
+                if(frontIsClear())
+                {
+                    moveForward();
+                    if(frontIsClear())
+                    {
+                        moveForward();
+                        if(frontIsClear())
+                        {
+                            moveForward();
+                            if(frontIsClear())
+                            {
+                                moveForward();
+                                if(frontIsClear())
+                                {
+                                    moveForward();
+                                    walkBackEightSteps();
+                                }
+                                else
+                                {
+                                    walkBackSevenSteps();
+                                }
+                            }
+                            else
+                            {
+                                walkBackSixSteps();
+                            }
+                        }
+                        else
+                        {
+                            walkBackFiveSteps();
+                        }
+                    }
+                    else
+                    {
+                        walkBackFourSteps();
+                    }
+                }
+                else
+                {
+                    walkBackTreeSteps();
+                }
+                
+            }
+            else
+            {
+                walkBackTwoSteps();
+            }
+        }
+        else
+        {
+            walkBackOneStep();
+        }
+    }
+    else
+    {
+        turnRight();
+    }
+}
+
+void walkBackOneStep(){
+    pickBeeper();
+    turnAround();
+    moveForward();
+    dropBeeper();
+    turnLeft();
+}
+
+void walkBackTwoSteps(){
+    pickBeeper();
+    turnAround();
+    repeat(2)
+    {
+        moveForward();
+    }
+    dropBeeper();
+    turnLeft();
+}
+
+void walkBackTreeSteps(){
+    pickBeeper();
+    turnAround();
+    repeat(3)
+    {
+        moveForward();
+    }
+    dropBeeper();
+    turnLeft();
+}
+
+void walkBackFourSteps(){
+    pickBeeper();
+    turnAround();
+    repeat(4)
+    {
+        moveForward();
+    }
+    dropBeeper();
+    turnLeft();
+}
+
+void walkBackFiveSteps(){
+    pickBeeper();
+    turnAround();
+    repeat(5)
+    {
+        moveForward();
+    }
+    dropBeeper();
+    turnLeft();
+}
+
+void walkBackSixSteps(){
+    pickBeeper();
+    turnAround();
+    repeat(6)
+    {
+        moveForward();
+    }
+    dropBeeper();
+    turnLeft();
+}
+
+void walkBackSevenSteps(){
+    pickBeeper();
+    turnAround();
+    repeat(7)
+    {
+        moveForward();
+    }
+    dropBeeper();
+    turnLeft();
+}
+
+void walkBackEightSteps(){
+    pickBeeper();
+    turnAround();
+    repeat(8)
+    {
+        moveForward();
+    }
+    dropBeeper();
+    turnLeft();
+}

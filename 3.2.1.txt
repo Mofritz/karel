@@ -1,0 +1,139 @@
+void secureTheCave(){
+    
+    while(frontIsClear())
+    {
+        pickOneRock();
+        moveForward();
+    }
+    pickOneRock();
+}
+
+
+// addition Functions
+
+void pickOneRock(){
+    turnLeft();
+    while(!onBeeper() && frontIsClear())
+    {
+        moveForward();
+    }
+    
+    if(frontIsClear() && onBeeper())
+    {
+        pickBeeper();
+        moveForward();
+        if(frontIsClear())
+        {
+            pickBeeper();
+            moveForward();
+            if(frontIsClear())
+            {
+                pickBeeper();
+                moveForward();
+                if(frontIsClear())
+                {
+                    pickBeeper();
+                    moveForward();
+                    pickBeeper();
+                    moveBack();
+                    setFiveStars();
+                }
+                else
+                {
+                    pickBeeper();
+                    moveBack();
+                    setFourStars();
+                }
+            }
+            else
+            {
+                pickBeeper();
+                moveBack();
+                setTreeStars();
+            }
+            
+        }
+        else
+        {
+            pickBeeper();
+            moveBack();
+            setTwoStars();
+        }
+    }
+    else if(onBeeper() && !frontIsClear())
+    {
+        pickBeeper();
+        moveBack();
+        setOneStar();
+    }
+    else
+    {
+        moveBack();
+    }
+}
+
+void moveBack(){
+    turnAround();
+    while(frontIsClear())
+    {
+        moveForward();
+    }
+    turnLeft();
+}
+
+void setOneStar()
+{
+    turnLeft();
+    dropBeeper();
+    moveForward();
+    turnRight();
+}
+
+void setTwoStars()
+{
+    turnLeft();
+    repeat(2)
+    {
+        dropBeeper();
+        moveForward();
+    }
+    turnRight();
+    
+}
+
+void setTreeStars()
+{
+    turnLeft();
+    repeat(3)
+    {
+        dropBeeper();
+        moveForward();
+    }
+    turnRight();
+    
+}
+
+void setFourStars()
+{
+    turnLeft();
+    repeat(4)
+    {
+        dropBeeper();
+        moveForward();
+    }
+    turnRight();
+    
+}
+
+
+void setFiveStars()
+{
+    turnLeft();
+    repeat(4)
+    {
+        dropBeeper();
+        moveForward();
+    }
+    turnRight();
+    
+}

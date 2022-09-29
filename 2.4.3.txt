@@ -1,0 +1,99 @@
+void addFast(){
+    while(rightIsClear())
+    {
+        addOneByte();
+    }
+}
+
+// AdditionFunction
+
+void addOneByte(){
+    
+    if(beeperAhead() && onBeeper())
+    {
+        moveForward();
+        if(beeperAhead())
+        {
+            addPlusCarry();
+        }
+        else{
+            addCarry();
+        }
+    }
+    else if((beeperAhead() && !onBeeper()) || (onBeeper() && !beeperAhead()))
+    {
+        moveForward();
+        if(beeperAhead())
+        {
+            addCarry();
+        }
+        else{
+            addNormal();
+        }
+    }
+    else
+    {
+        moveForward();
+        if(beeperAhead())
+        {
+            addNormal();
+        }
+        else{
+            addNothing();
+        }
+    }
+}
+
+void addPlusCarry(){
+    moveForward();
+    moveForward();
+    dropBeeper();
+    turnRight();
+    moveForward();
+    turnRight();
+    moveForward();
+    dropBeeper();
+    moveForward();
+    moveForward();
+    turnAround();   
+}
+
+void addCarry(){
+    moveForward();
+    moveForward();
+    turnRight();
+    moveForward();
+    turnRight();
+    moveForward();
+    dropBeeper();
+    moveForward();
+    moveForward();
+    turnAround();
+    
+}
+
+void addNormal(){
+    moveForward();
+    moveForward();
+    dropBeeper();
+    turnRight();
+    moveForward();
+    turnRight();
+    moveForward();
+    moveForward();
+    moveForward();
+    turnAround();
+    
+}
+
+void addNothing(){
+    moveForward();
+    moveForward();
+    turnRight();
+    moveForward();
+    turnRight();
+    moveForward();
+    moveForward();
+    moveForward();
+    turnAround();
+}

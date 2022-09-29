@@ -1,0 +1,159 @@
+void layAndRemoveTiles(){
+    layTiles();
+    turnAround();
+    removeTiles();
+}
+
+// additional Functions
+
+void layTiles(){
+    
+    while(!onBeeper())
+    {
+        
+        if(frontIsClear() && !beeperAhead())
+        {
+            dropBeeper();
+            moveForward();
+        }
+        else if(!frontIsClear() || beeperAhead())
+        {
+            turnLeft();
+            if(beeperAhead())
+            {
+                dropBeeper();
+                moveForward();
+            }
+        }
+        
+    }
+    
+}
+
+void removeTiles(){
+    
+    firstLayer();
+    secondLayer();
+    thirdLayer();
+    forthLayer();
+    lastLayer();
+}
+
+void firstLayer(){
+    pickBeeper();
+    moveForward();
+    turnRight();
+    pickBeeper();
+    moveForward();
+    turnRight();
+    pickBeeper();
+    moveForward();
+    pickBeeper();
+    turnRight();
+    moveForward();
+    moveForward();
+    turnRight();
+    
+}
+
+void secondLayer(){
+    pickBeeper();
+    repeat(2){
+        moveForward();
+        pickBeeper();
+    }
+    turnRight();
+    repeat(3){
+        moveForward();
+        pickBeeper();
+    }
+    turnRight();
+    repeat(3){
+        moveForward();
+        pickBeeper();
+    }
+    turnRight();
+    repeat(3){
+        moveForward();
+        pickBeeper();
+    }
+    moveForward();
+    turnRight();
+    
+}
+
+void thirdLayer(){
+    pickBeeper();
+    repeat(4){
+        moveForward();
+        pickBeeper();
+    }
+    turnRight();
+    repeat(5){
+        moveForward();
+        pickBeeper();
+    }
+    turnRight();
+    repeat(5){
+        moveForward();
+        pickBeeper();
+    }
+    turnRight();
+    repeat(5){
+        moveForward();
+        pickBeeper();
+    }
+    moveForward();
+    turnRight();
+    
+}
+
+void forthLayer(){
+    pickBeeper();
+    repeat(6){
+        moveForward();
+        pickBeeper();
+    }
+    turnRight();
+    repeat(7){
+        moveForward();
+        pickBeeper();
+    }
+    turnRight();
+    repeat(7){
+        moveForward();
+        pickBeeper();
+    }
+    turnRight();
+    repeat(7){
+        moveForward();
+        pickBeeper();
+    }
+    moveForward();
+    turnRight();
+    
+}
+
+void lastLayer(){
+    pickBeeper();
+    repeat(8){
+        moveForward();
+        pickBeeper();
+    }
+    turnRight();
+    repeat(9){
+        moveForward();
+        pickBeeper();
+    }
+    turnRight();
+    repeat(9){
+        moveForward();
+        pickBeeper();
+    }
+    turnRight();
+    repeat(9){
+        moveForward();
+        pickBeeper();
+    }
+    
+}

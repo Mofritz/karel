@@ -1,0 +1,60 @@
+void addSlow(){
+    
+    decrement();
+    while(frontIsClear()){
+        goSecondByte();
+        increment();
+        goFirstByte();
+        decrement();
+        
+    }
+}
+
+
+
+// additional Functions
+
+void decrement(){
+    while(!onBeeper() && frontIsClear())
+    {
+        dropBeeper();
+        moveForward();
+    } 
+    if(onBeeper())
+    {
+        pickBeeper();
+    }
+    
+}
+
+void increment(){
+    while(onBeeper())
+    {
+        pickBeeper();
+        moveForward();
+    }
+    dropBeeper();
+    
+}
+
+void goFirstByte(){
+    turnAround();
+    while(frontIsClear())
+    {
+        moveForward();
+    }
+    turnLeft();
+    moveForward();
+    turnLeft();
+}
+
+void goSecondByte(){
+    turnAround();
+    while(frontIsClear())
+    {
+        moveForward();
+    }
+    turnRight();
+    moveForward();
+    turnRight();
+}
